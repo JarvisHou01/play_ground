@@ -8,7 +8,7 @@ import java.io.*;
 public class XORUtils {
 
     public static void main(String[] args) throws Exception {
-        XORUtils.encryptFile(new File("C:\\Users\\HJW\\Desktop\\cor.ttH"),new File("C:\\Users\\HJW\\Desktop\\tt.rar"),"42694698".getBytes());
+
     }
 
     /**
