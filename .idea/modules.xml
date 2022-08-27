@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/java_module/java_module.iml" filepath="$PROJECT_DIR$/java_module/java_module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven_module/maven_module.iml" filepath="$PROJECT_DIR$/maven_module/maven_module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/play_ground.iml" filepath="$PROJECT_DIR$/play_ground.iml" />
+    </modules>
+  </component>
+</project>
