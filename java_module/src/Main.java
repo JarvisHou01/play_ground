@@ -1,28 +1,37 @@
-//原来的答案 算法复杂度太大 空间复杂度也大
-//参考讨论区的 更新 新方法
-
-import java.util.Scanner;
+import java.util.Random;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 public class Main {
-    public static long count(int n) {
-        if (n <= 0) return 0;
-        int[] coins = new int[]{1, 5, 10, 20, 50, 100};
-        long[] dp = new long[n + 1];
-        dp[0] = 1;
-        for (int i = 0; i < coins.length; i++) {
-            for (int j = coins[i]; j <= n; j++) {
-                dp[j] = dp[j] + dp[j - coins[i]];//类似斐波那契 后者的种类数基于前者
-            }
-        }
-        return dp[n];
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+
+        FutureTask<Integer> task1 = new FutureTask<Integer>(new MyCallable());
+        FutureTask<Integer> task2 = new FutureTask<Integer>(new MyCallable());
+        FutureTask<Integer> task3 = new FutureTask<Integer>(new MyCallable());
+
+        new Thread(task1).start();
+        new Thread(task2).start();
+        new Thread(task3).start();
+
+        Integer integer1 = task1.get();
+        Integer integer2 = task2.get();
+        Integer integer3 = task3.get();
+
+        System.out.println(integer1);
+        System.out.println(integer2);
+        System.out.println(integer3);
+
+        System.out.println(integer1 + integer2 + integer3);
     }
 
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        while (sc.hasNext()) {
-            int n = sc.nextInt();
-            long res = count(n);
-            System.out.println(res);
-        }
+}
+
+class MyCallable implements Callable<Integer> {
+    @Override
+    public Integer call() throws Exception {
+        Random r = new Random();
+        return r.nextInt(100);
     }
 }
